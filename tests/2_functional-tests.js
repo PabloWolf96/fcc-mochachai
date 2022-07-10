@@ -22,13 +22,12 @@ suite("Functional Tests", function () {
     });
     // #2
     test("Test GET /hello with your name", function (done) {
-      let myName = "Owen";
       chai
         .request(server)
-        .get(`/hello?name=${myName}`)
+        .get("/hello?name=Owen")
         .end(function (err, res) {
           assert.equal(res.status, 200);
-          assert.equal(res.text, `hello ${myName}`);
+          assert.equal(res.text, "hello Owen");
           done();
         });
     });
