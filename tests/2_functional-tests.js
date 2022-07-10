@@ -63,11 +63,16 @@ suite("Functional Tests", function () {
 });
 
 const Browser = require("zombie");
+const browser = new Browser();
+browser.site = "https://fcc-mochachai.pablowolf.repl.co";
 
 suite("Functional Tests with Zombie.js", function () {
   this.timeout(5000);
+  suiteSetup(function (done) {
+    browser.visit("/", done);
+  });
 
-  suite("Headless browser", function () {
+  suite("Headless browser", function (done) {
     test('should have a working "site" property', function () {
       assert.isNotNull(browser.site);
     });
